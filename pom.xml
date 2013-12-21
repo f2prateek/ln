@@ -36,7 +36,7 @@
 
   <groupId>com.f2prateek.ln</groupId>
   <artifactId>ln-parent</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Ln (Parent)</name>
