@@ -82,7 +82,7 @@ public class LnFacade implements LnInterface {
     }
   }
 
-  @Override public void v(Throwable throwable, Object s1, Object[] args) {
+  @Override public void v(Throwable throwable, Object s1, Object... args) {
     for (LnInterface ln : endpoints) {
       ln.v(throwable, s1, args);
     }
@@ -90,7 +90,7 @@ public class LnFacade implements LnInterface {
 
   @Override public void d(Throwable t) {
     for (LnInterface ln : endpoints) {
-      ln.v(t);
+      ln.d(t);
     }
   }
 
@@ -144,7 +144,7 @@ public class LnFacade implements LnInterface {
 
   @Override public void e(Throwable t) {
     for (LnInterface ln : endpoints) {
-      ln.v(t);
+      ln.e(t);
     }
   }
 
@@ -156,7 +156,7 @@ public class LnFacade implements LnInterface {
 
   @Override public void e(Object s1, Object... args) {
     for (LnInterface ln : endpoints) {
-      ln.e(args);
+      ln.e(s1, args);
     }
   }
 

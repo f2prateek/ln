@@ -85,7 +85,7 @@ public class DebugLn implements LnInterface {
   }
 
   @Override
-  public void v(Throwable throwable, Object s1, Object[] args) {
+  public void v(Throwable throwable, Object s1, Object... args) {
     if (getLoggingLevel() > Log.VERBOSE) return;
 
     final String s = Strings.toString(s1);

@@ -59,7 +59,7 @@ public interface LnInterface {
    * @param s1 the format string (see {@link java.util.Formatter#format})
    * @param args the list of arguments passed to the formatter
    */
-  void v(Throwable throwable, Object s1, Object[] args);
+  void v(Throwable throwable, Object s1, Object... args);
 
   /**
    * Send a {@link android.util.Log#DEBUG} log message.

@@ -1,11 +1,12 @@
 Change Log
 ==========
 
-Version 1.1.0 *(2013-12-24)*
+Version 1.1.0 *(In progress)*
 ----------------------------
 
  * DebugLn does not need a context in it's constructor.
- * DebugLn uses thread name in message isntead of tag.
+ * DebugLn uses thread name in message instead of tag.
+ * Fix : LnFacade would incorrectly delegate to wrong methods. Also added tests.
 
 
 Version 1.0.0 *(2013-12-21)*

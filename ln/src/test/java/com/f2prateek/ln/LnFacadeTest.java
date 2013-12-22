@@ -36,6 +36,8 @@ import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowLog;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class) @Config(manifest = Config.NONE)
 public class LnFacadeTest {
@@ -65,5 +67,23 @@ public class LnFacadeTest {
     Ln.setLoggingLevel(Log.WARN);
     Ln.i(HELLO_WORLD);
     assertThat(ShadowLog.getLogs()).hasSize(0);
+  }
+
+  @Test public void correctLevelIsCalled() {
+    LnInterface lnInterface = mock(LnInterface.class);
+    LnFacade facade = new LnFacade(Log.VERBOSE, lnInterface);
+    Ln.set(facade);
+
+    Throwable throwable = new Throwable("test");
+    String format = "%s, %d";
+    String arg1 = "Hello";
+    int arg2 = 1;
+
+    Ln.v(throwable);
+    verify(lnInterface).v(throwable);
+    Ln.v(format, arg1, arg2);
+    verify(lnInterface).v(format, arg1, arg2);
+    Ln.v(throwable, format, arg1, arg2);
+    verify(lnInterface).v(throwable, format, arg1, arg2);
   }
 }

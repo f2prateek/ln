@@ -32,7 +32,8 @@ package com.f2prateek.ln;
  * android.util.Log#ASSERT} to log nothing.
  * This is slightly more efficient since it doesn't perform any check at all.
  *
- * If you don't need all available methods in {@link com.f2prateek.ln.LnInterface}, you can subclass
+ * If you don't need all available methods in {@link com.f2prateek.ln.LnInterface}, you can
+ * subclass
  * this class instead and override the methods you need.
  */
 public class EmptyLn implements LnInterface {
@@ -44,7 +45,7 @@ public class EmptyLn implements LnInterface {
 
   }
 
-  @Override public void v(Throwable throwable, Object s1, Object[] args) {
+  @Override public void v(Throwable throwable, Object s1, Object... args) {
 
   }
 
