@@ -33,8 +33,9 @@ import android.util.Log;
 /**
  * Implementation of {@link com.f2prateek.ln.LnInterface} that prints to {@link android.util.Log}.
  *
- * This class will use your package name, source file,  line number  of  the call and current
- * thread as the tag. Override {@link #processTag(String)} to modify this behaviour.
+ * This class will use your package name, source file,  line number of the call as the tag and adds
+ * the  current thread to the message. Override {@link #processTag(String)} to modify this
+ * behaviour.
  *
  * You can also override {@link #processMessage(String)}. A good scenario to do this would be if
  * you wanted to automatically filter sensitive information from your logs (credit card numbers,
@@ -45,7 +46,8 @@ import android.util.Log;
  */
 public class DebugLn implements LnInterface {
 
-  private static final String MSG_FORMAT = "%s/%s:%s[%s]";
+  private static final String TAG_FORMAT = "%s/%s:%s";
+  private static final String MSG_FORMAT = "[%s] %s";
   protected int minimumLogLevel;
   protected String packageName;
 
@@ -220,7 +222,7 @@ public class DebugLn implements LnInterface {
   }
 
   /**
-   * Provide a message for logging.
+   * Provide a message for logging. This prepends the current thread to the message.
    * Override this if you want to filter sensitive information, or add extra information to each
    * message before dispatching.
    *
@@ -228,13 +230,13 @@ public class DebugLn implements LnInterface {
    * @return The message that is logged
    */
   protected String processMessage(String msg) {
-    return msg;
+    return String.format(MSG_FORMAT, msg, Thread.currentThread().getName());
   }
 
   /**
    * Provide a tag for logging.
-   * By default this returns a tag with the package name, file name, line number and thread of
-   * the caller. Override this to show different information in the tag.
+   * By default this returns a tag with the package name, file name, and line number of the calling
+   * function. Override this to show different information in the tag.
    *
    * @param packageName the packageName of the app
    * @return the tag to log with
@@ -243,7 +245,6 @@ public class DebugLn implements LnInterface {
     final int skipDepth = 6; // skip 6 stackframes to find the location where this was called
     final Thread thread = Thread.currentThread();
     final StackTraceElement trace = thread.getStackTrace()[skipDepth];
-    return String.format(MSG_FORMAT, packageName, trace.getFileName(), trace.getLineNumber(),
-        thread.getName());
+    return String.format(TAG_FORMAT, packageName, trace.getFileName(), trace.getLineNumber());
   }
 }

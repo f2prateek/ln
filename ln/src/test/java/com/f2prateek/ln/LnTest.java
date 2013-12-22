@@ -151,7 +151,7 @@ public class LnTest {
     ShadowLog.LogItem log = logs.get(0);
     assertLogType(log, type);
     assertThat(log.msg).contains(HELLO_WORLD);
-    assertThat(log.tag).contains("main");
+    assertThat(log.msg).contains("main");
     assertThat(log.throwable).isNull();
   }
 
