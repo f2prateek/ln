@@ -72,7 +72,7 @@ public class DaggerApp extends Application {
     }
 
     @Provides LnInterface provideDebugLn(Context context) {
-      return new DebugLn(context);
+      return DebugLn.from(context);
     }
   }
 

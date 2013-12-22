@@ -49,15 +49,22 @@ public class DebugLn implements LnInterface {
   protected int minimumLogLevel;
   protected String packageName;
 
-  public DebugLn(Context context) {
-    packageName = context.getPackageName();
+  public DebugLn(String packageName, int minimumLogLevel) {
+    this.packageName = packageName;
+    this.minimumLogLevel = minimumLogLevel;
+  }
+
+  public static DebugLn from(final Context context) {
+    String packageName = context.getPackageName();
+    int minimumLogLevel = Log.INFO;
     try {
       final int flags = context.getPackageManager().getApplicationInfo(packageName, 0).flags;
-      minimumLogLevel = (flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0 ? Log.VERBOSE : Log.INFO;
+      minimumLogLevel =
+          (flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0 ? Log.VERBOSE : minimumLogLevel;
     } catch (PackageManager.NameNotFoundException e) {
       e.printStackTrace();
-      minimumLogLevel = Log.INFO;
     }
+    return new DebugLn(packageName, minimumLogLevel);
   }
 
   @Override

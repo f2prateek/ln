@@ -44,8 +44,8 @@ public class LnFacadeTest {
 
   @Before public void setUp() {
     Context context = Robolectric.getShadowApplication().getApplicationContext();
-    LnFacade lnFacade = new LnFacade(new DebugLn(context), new DebugLn(context));
-    lnFacade.addLoggingEndpoint(new DebugLn(context));
+    LnFacade lnFacade = new LnFacade(DebugLn.from(context), DebugLn.from(context));
+    lnFacade.addLoggingEndpoint(DebugLn.from(context));
     lnFacade.addLoggingEndpoint(new EmptyLn());
     Ln.set(lnFacade);
     Ln.setLoggingLevel(Log.VERBOSE);

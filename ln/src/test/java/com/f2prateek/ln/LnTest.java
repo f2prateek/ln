@@ -44,7 +44,7 @@ public class LnTest {
   private static final String HELLO_WORLD = "Hello, world!";
 
   @Before public void setUp() {
-    Ln.set(new DebugLn(Robolectric.getShadowApplication().getApplicationContext()));
+    Ln.set(DebugLn.from(Robolectric.getShadowApplication().getApplicationContext()));
     Ln.setLoggingLevel(Log.VERBOSE);
   }
 

@@ -35,7 +35,7 @@ public class ExampleApp extends Application {
 
     if (BuildConfig.DEBUG) {
       // By default, this is done via injection
-      Ln.set(new DebugLn(this));
+      Ln.set(DebugLn.from(this));
     } else {
       // By default, Ln has an EmptyLn
       // So no need to configure anything for release
