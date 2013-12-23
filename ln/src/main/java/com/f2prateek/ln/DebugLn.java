@@ -230,7 +230,7 @@ public class DebugLn implements LnInterface {
    * @return The message that is logged
    */
   protected String processMessage(String msg) {
-    return String.format(MSG_FORMAT, msg, Thread.currentThread().getName());
+    return String.format(MSG_FORMAT, Thread.currentThread().getName(), msg);
   }
 
   /**
