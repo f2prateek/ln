@@ -1,10 +1,11 @@
-Ln [![Build Status](https://travis-ci.org/f2prateek/ln.png)](https://travis-ci.org/f2prateek/ln)
+Deprecated
 ==============
+
+Ln is deprecated.
 
 Android applications typically use the built-in android.util.Log facility to log information to the android console.
 Ln is more natural log for Android. Forked from [RoboGuice](1).
-It allows you to use a single API to control the log level, disable all logging (e.g. for release builds) and log to multiple endpoints.
-I was tired of copying these classes into my apps, so now it's a library.
+It allows you to use a single API to control the log level, disable all logging (e.g. for release builds) and log to multiple facades.
 
 Usage
 --------------
